@@ -1,0 +1,109 @@
+
+##############################################
+#           Service Configuration           #
+##############################################
+server.port: 2189
+
+
+spring.mvc.pathmatch.matching-strategy: ant_path_matcher
+
+feign.compression.request.enabled: true
+feign.compression.response.enabled: true
+
+spring.application.name: core-service
+spring.profiles.active: dev
+
+server.max-http-header-size: 15360
+server.compression.enabled: true
+server.compression.min-response-size: 1
+
+management.server.port: 21891
+management.health.db.enabled: true
+management.endpoints.web.exposure.include: health,info,metrics,hystrix,prometheus,refresh
+
+spring.datasource.hikari.minimum-idle: 2
+spring.datasource.hikari.maximum-pool-size: 5
+spring.datasource.hikari.maxLifeTime: 100000
+
+spring.servlet.multipart.max-file-size: 200MB
+spring.servlet.multipart.max-request-size: 200MB
+
+
+  ##############################################
+  #          Documentation Configuration       #
+##############################################
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+
+  ##############################################
+  #           Database Configuration           #
+  ##############################################
+  datasource:
+    url: jdbc:mysql://localhost:3306/stylefrica-service?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: Password@1
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate.show_sql: false
+      hibernate.use_sql_comments: true
+      hibernate.format_sql: true
+      hibernate.type: trace
+      hibernate.ddl-auto: none
+
+  ##############################################
+  #           Mail Server  Configuration       #
+  ##############################################
+  mail:
+    username: hello@stylefrica.com
+    password: 'mjocvexcbkewbchq'
+    host: smtp.gmail.com
+    port: 465
+    protocol: smtp
+    sender: StyleFrica <hello@stylefrica.com>
+    properties:
+      mail:
+        debug: true
+        defaultEncoding: UTF-8
+        smtp:
+          auth: true
+          protocol: smtp
+          starttls:
+            enable: true
+            required: false
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+      sender: StyleFrica <hello@stylefrica.com>
+##############################################
+#     Security Key pair  Configuration       #
+##############################################
+security:
+  jwt:
+    key-store: classpath:keys/stylefrica.jks
+    key-store-password: stylefrica
+    key-pair-alias: stylefrica
+    key-pair-password: stylefrica
+    public-key: classpath:keys/public.txt
+
+
+
+##############################################
+#         Integration Properties             #
+##############################################
+
+integrations:
+
+  ###### INFO-BIP ##############################
+  info-bip:
+    api-key: 'App 686dd399b957c506175e11c95d6371d0-9d30a344-371b-49a7-86f0-3f51cfc78bd6'
+    base-url: https://4m5ywn.api.infobip.com
+  ###### SENDGRID ##############################
+
+  sendgrid.apiKey: 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
+  sendgrid.sender.email: hello@stylefrica.com
+  sendgrid.sender.name: StyleFrica

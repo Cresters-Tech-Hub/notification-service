@@ -1,0 +1,20 @@
+package com.cresters.notification.domain.response;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+/**
+ * @author stephen.obi
+ */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ErrorResponse {
+
+    private List<ErrorModel> errorMessage;
+}
